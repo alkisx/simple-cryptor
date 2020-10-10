@@ -1,0 +1,25 @@
+{
+  "name": "simple-cryptor",
+  "version": "1.0.0",
+  "description": "Simple Crypt class base on Node's crypto",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alkisx/simple-cryptor.git"
+  },
+  "keywords": [
+    "crypt",
+    "encrypt",
+    "decrypt",
+    "crypto"
+  ],
+  "author": "Alkiviadis Doulgeris",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/alkisx/simple-cryptor/issues"
+  },
+  "homepage": "https://github.com/alkisx/simple-cryptor#readme"
+}
