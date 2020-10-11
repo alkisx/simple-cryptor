@@ -61,6 +61,18 @@ it('.getDefaultConfig() should return the expected object',() => {
   expect(conf.algorithm.length).to.be.gt(0);
 });
 
+
+it('algorithm accessor should return the _algorithm', () => {
+  const sc = new SimpleCrypto(secret1);
+  expect(sc.algorithm).to.eq(sc._algorithm);
+});
+
+if('iv getter should return the _iv property', () => {
+  const sc = new SimpleCrypto(secret1);
+  expect(sc.iv).to.eq(sc._iv);
+});
+
+
 it('should create a new instance of SimpleCrypto object with only config.algorithm provided', ()=>{
   const n2 = () =>
     new SimpleCrypto(
