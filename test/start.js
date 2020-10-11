@@ -52,6 +52,15 @@ it('shoud create a new instance of SimpleCrypto object with only config.ivSize p
   expect(sc1._config.algorithm).to.eq(sc1.getDefaultConfig().algorithm);
 });
 
+it('.getDefaultConfig() should return the expected object',() => {
+  const sc1 = new SimpleCrypto(secret1);
+  const conf = sc1.getDefaultConfig();
+  expect(conf).to.have.property('ivSize');
+  expect(conf.ivSize).to.be.gt(0);
+  expect(conf).to.have.property('algorithm');
+  expect(conf.algorithm.length).to.be.gt(0);
+});
+
 it('should create a new instance of SimpleCrypto object with only config.algorithm provided', ()=>{
   const n2 = () =>
     new SimpleCrypto(
