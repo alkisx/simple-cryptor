@@ -86,7 +86,10 @@ class SimpleCrypto {
 
   decryptFromString(str) {
     str = ""+str;
-    const buff = new Buffer(str, 'base64');
+    if(!str.length) {
+      throw new Error('String is empty');
+    }
+    const buff = Buffer.from(str, 'base64');
     const jsonString = buff.toString('ascii');
     const hash = JSON.parse(jsonString);
     return this.decrypt(hash);
