@@ -105,6 +105,10 @@ class SimpleCrypto {
     return defaultConfig;
   }
 
+  static get SECRET_LENGTH()
+  {
+    return SECRET_LENGTH;
+  }
 
 }
 
