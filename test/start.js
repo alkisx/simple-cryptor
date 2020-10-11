@@ -116,7 +116,7 @@ it('should return false in case the hash object is invalid (.isHash())', () => {
 
 });
 
-it('should return true in case the hash object is a valid one (.isHash()', () => {
+it('should return true in case the hash object is a valid one (.isHash())', () => {
   const hash = {
     iv: iv1,
     content: content1
