@@ -55,27 +55,44 @@ class SimpleCrypto {
 
   }
 
-  encrypt(text){
-
+  encrypt(str){
+    str +="";
+    if(!str.length) {
+      throw new Error('String is empty');
+    }
     const cipher = crypto.createCipheriv(this._algorithm, this._secret, this._iv);
 
-    const encrypted = Buffer.concat([cipher.update(text), cipher.final()]);
+    const encrypted = Buffer.concat([cipher.update(str), cipher.final()]);
 
     return {
-      iv: iv.toString('hex'),
+      iv: this._iv.toString('hex'),
       content: encrypted.toString('hex')
     };
   };
 
-  encryptToString(text) {
-    text = ""+text;
-    const obj = this.encrypt(text);
-    const str = JSON.stringify(obj);
-    const buff = new Buffer(result);
+  encryptToString(str) {
+    const obj = this.encrypt(str);
+    str = JSON.stringify(obj);
+    const buff = Buffer.from(str);
     return buff.toString('base64');
   }
 
+  static isHash(hash) {
+
+    return (typeof hash === 'object') &&
+      (!!hash.iv && !!hash.content) &&
+      (typeof hash.iv === 'string' && typeof hash.content === 'string') &&
+      (hash.iv.length > 0 && hash.content.length > 0)
+    ;
+
+  }
+
+
   decrypt(hash){
+
+    if(!SimpleCrypto.isHash(hash)) {
+      throw new Error('Hash is invalid');
+    }
 
     const decipher = crypto.createDecipheriv(this._algorithm, this._secret, Buffer.from(hash.iv, 'hex'));
 
